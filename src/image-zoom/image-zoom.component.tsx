@@ -540,20 +540,20 @@ export default class ImageViewer extends React.Component<ImageZoomProps, ImageZo
     }
 
     // 拖拽正常结束后,如果没有缩放,直接回到0,0点
-    if (this.props.enableCenterFocus && this.scale === 1) {
-      this.positionX = 0;
-      this.positionY = 0;
-      Animated.timing(this.animatedPositionX, {
-        toValue: this.positionX,
-        duration: 100,
-        useNativeDriver: !!this.props.useNativeDriver,
-      }).start();
-      Animated.timing(this.animatedPositionY, {
-        toValue: this.positionY,
-        duration: 100,
-        useNativeDriver: !!this.props.useNativeDriver,
-      }).start();
-    }
+//     if (this.props.enableCenterFocus && this.scale === 1) {
+//       this.positionX = 0;
+//       this.positionY = 0;
+//       Animated.timing(this.animatedPositionX, {
+//         toValue: this.positionX,
+//         duration: 100,
+//         useNativeDriver: !!this.props.useNativeDriver,
+//       }).start();
+//       Animated.timing(this.animatedPositionY, {
+//         toValue: this.positionY,
+//         duration: 100,
+//         useNativeDriver: !!this.props.useNativeDriver,
+//       }).start();
+//     }
 
     // 水平溢出量置空
     this.horizontalWholeOuterCounter = 0;
@@ -647,6 +647,11 @@ export default class ImageViewer extends React.Component<ImageZoomProps, ImageZo
   }
 
   public render(): React.ReactNode {
+    
+    if(this.props.imageHeight * this.scale > this.props.cropHeight){
+        this.positionY = ((this.props.imageHeight * this.scale-this.props.cropHeight) /2);
+        this.animatedPositionY.setValue( this.positionY )
+    }
     const animateConf = {
       transform: [
         {
