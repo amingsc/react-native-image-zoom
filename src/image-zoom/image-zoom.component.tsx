@@ -314,18 +314,18 @@ export default class ImageViewer extends React.Component<ImageZoomProps, ImageZo
 
             // 如果图片上边缘脱离屏幕上边缘，则进入 swipeDown 动作
             if (
-              (_this.props.imageHeight / 2 - _this.positionY) * _this.scale <
-              _this.props.cropHeight / 2
+              (this.props.imageHeight / 2 - this.positionY) * this.scale <
+              this.props.cropHeight / 2
             ) {
-              if (_this.props.enableSwipeDown) {
-                _this.swipeDownOffset += diffY
+              if (this.props.enableSwipeDown) {
+                this.swipeDownOffset += diffY
                 // 只要滑动溢出量不小于 0，就可以拖动
-                if (_this.swipeDownOffset > 0 ) {
-                    _this.positionY += diffY / _this.scale
-                    _this.animatedPositionY.setValue(_this.positionY)
+                if (this.swipeDownOffset > 0 ) {
+                    this.positionY += diffY / this.scale
+                    this.animatedPositionY.setValue(this.positionY)
                   // 越到下方，缩放越小
-                  _this.scale = _this.scale - diffY / 1000
-                  _this.animatedScale.setValue(_this.scale)
+                  this.scale = this.scale - diffY / 1000
+                  this.animatedScale.setValue(this.scale)
                 }
               }
             }
