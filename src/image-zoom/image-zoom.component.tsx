@@ -348,8 +348,8 @@ export default class ImageViewer extends React.Component<ImageZoomProps, ImageZo
           }
           
           // 解决竖划时左右滑动的问题
-          if (_this.props.enableSwipeDown &&!_this.isHorizontalWrap) {
-              _this.swipeDownOffset += diffX/_this.scale
+          if (this.props.enableSwipeDown &&!this.isHorizontalWrap) {
+              this.swipeDownOffset += diffX/this.scale
           }
         }
       } else {
