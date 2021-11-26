@@ -289,7 +289,9 @@ export default class ImageViewer extends React.Component<ImageZoomProps, ImageZo
               this.animatedPositionX.setValue(this.positionX);
             } else {
               // 不能横向拖拽，全部算做溢出偏移量
-              this.horizontalWholeOuterCounter += diffX;
+              if(_this.isHorizontalWrap){
+                this.horizontalWholeOuterCounter += diffX;
+              }
             }
 
             // 溢出量不会超过设定界限
@@ -348,9 +350,9 @@ export default class ImageViewer extends React.Component<ImageZoomProps, ImageZo
           }
           
           // 解决竖划时左右滑动的问题
-          if (this.props.enableSwipeDown &&!this.isHorizontalWrap) {
-              this.swipeDownOffset += diffX/this.scale
-          }
+          //if (this.props.enableSwipeDown &&!this.isHorizontalWrap) {
+          //    this.swipeDownOffset += diffX/this.scale
+          //}
         }
       } else {
         // 多个手指的情况
