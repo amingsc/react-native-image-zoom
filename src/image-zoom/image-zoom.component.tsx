@@ -289,7 +289,7 @@ export default class ImageViewer extends React.Component<ImageZoomProps, ImageZo
               this.animatedPositionX.setValue(this.positionX);
             } else {
               // 不能横向拖拽，全部算做溢出偏移量
-              if(_this.isHorizontalWrap){
+              if(this.isHorizontalWrap){
                 this.horizontalWholeOuterCounter += diffX;
               }
             }
